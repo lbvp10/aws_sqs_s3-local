@@ -1,0 +1,20 @@
+version: '3.7'
+services:
+  aws:
+    image: 'localstack/localstack'
+    container_name: 'localstack2'
+    environment:
+      - SERVICES=sqs
+      - DEFAULT_REGION=us-east-1
+      - AWS_DEFAULT_REGION=us-east-1
+      - DEBUG=1
+      - DATA_DIR=/tmp/localstack/data
+    ports:
+      - '4566:4566'
+  postgres:
+    image: 'postgres'
+    container_name: 'postgresw'
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '25432:5432'
